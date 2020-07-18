@@ -1,0 +1,65 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* partition(ListNode* head, int x) {
+        
+        ListNode* lstart = NULL;
+        ListNode* lend = NULL;
+        ListNode* rstart = NULL;
+        ListNode* rend = NULL;
+        
+        while(head!=NULL)
+        {
+            
+            ListNode* nextnode = head->next;
+            head->next=NULL;
+            
+            if(head->val < x)   // left linkeked list for elements < x;
+            {
+                if(lstart == NULL)
+                {
+                 lstart = head;
+                 lend = lstart;
+                }
+                else
+                { 
+                    lend->next = head;
+                    lend = head;
+                }
+            }
+            
+            else
+            {
+                if(rstart == NULL)     // right linkeked list for elements >= x;
+                {
+                 rstart = head;
+                 rend = head;
+                }
+                else
+                {
+                    rend->next = head;
+                    rend = head;
+                }
+            }
+            
+            head = nextnode;
+            
+          }
+        
+        if(lstart!=NULL){ lend->next = rstart;}  //connect 2 linked lists 
+        
+        if(lstart == NULL) {return rstart;}     // if no elemnts in left linked list return                                                       start of right liked list
+        else{return lstart;}
+            
+        
+    }
+};
