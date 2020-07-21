@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int climbStairs(int n) {
+        int x=fib(n);
+        return x;
+    }
+    
+    int fib(int n)              // 2^n soln
+    {
+        if(n<=1){return 1;}
+        return fib(n-1)+fib(n-2);
+    }
+    
+};
+
+****************************************************
+
+class Solution {           // Using Dynamic Programming
+public:
+    int climbStairs(int n) {
+        
+        //stairs[0]=1; for 0 steps
+        int stairs[n+2];
+        stairs[1]=1;
+        stairs[2]=2;
+        
+        for(int i=3;i<=n;i++)
+        {
+            stairs[i]=stairs[i-1]+stairs[i-2];
+        }
+        
+        return stairs[n];
+    }
+    
+    
+};
