@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string longest_substring(string s){
+string longest_substring(string s){   //also can be used for Longest Semi-Alternating Substring length 
+	(a substring does not contain 3 identical consecutive chars)
     
     int cnt=1;
     int start=0;
